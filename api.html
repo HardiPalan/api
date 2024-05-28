@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html ng-app="charList">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="botstrap_modified.css" />
+    <link rel="stylesheet" href="api.css" />
+    <title>Character website</title>
+  </head>
+  <body ng-controller="myCtrl">
+    <div class="header">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Characters</a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#about">About Us</a>
+              </li>
+            </ul>
+            <form class="d-flex ng-submit = search()">
+              <input
+                class="form-control me-2"
+                type="search"
+                placeholder="Enter character name"
+                aria-label="Search"
+                ng-model = "searchText"
+              />
+              <button class="btn btn-outline-danger" type="submit">
+                Search
+              </button>
+            </form>
+          </div>
+        </div>
+      </nav>
+    </div>
+    <div class="container mt-5">
+      <h1 class="text-center">Character Gallery</h1>
+      <div class="row mt-4">
+        <div class="col-md-2" ng-repeat="character in filterCharacters =(characters | filter: searchText| limitTo: 25)">
+          <div class="card mb-4">
+            <img
+              class="card-img-top"
+              ng-src="{{ character.image }}"
+              alt="{{ character.name }}"
+            />
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">{{ character.name }}</h3>
+          </div>
+          <div class="card-body">
+            <h5>Actor: {{ character.actor }}</h5>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="angular.min.js"></script>
+    <script src="api.js"></script>
+  </body>
+</html>
+<!-- <div class="col-md-4 col-sm-6 mb-grid-gutter">
+          <a class="card border-0 shadow" href="food-delivery-category.html"
+            ><img class="card-img-top" src="assests/menu.jpg" alt="Food Name" />
+            <div class="card-body py-4 text-center">
+              <h3 class="h5 mt-1">Food Name</h3>
+            </div></a
+          >
+        </div>
+        <div class="col-md-4 col-sm-6 mb-grid-gutter">
+          <a class="card border-0 shadow" href="food-delivery-category.html"
+            ><img class="card-img-top" src="assests/menu.jpg" alt="Food Name" />
+            <div class="card-body py-4 text-center">
+              <h3 class="h5 mt-1">Food Name</h3>
+            </div></a
+          >
+        </div>
+        <div class="col-md-4 col-sm-6 mb-grid-gutter">
+          <a class="card border-0 shadow" href="food-delivery-category.html"
+            ><img class="card-img-top" src="assests/menu.jpg" alt="Food Name" />
+            <div class="card-body py-4 text-center">
+              <h3 class="h5 mt-1">Food Name</h3>
+            </div></a
+          >
+        </div>
+        <div class="col-md-4 col-sm-6 mb-grid-gutter">
+          <a class="card border-0 shadow" href="food-delivery-category.html"
+            ><img class="card-img-top" src="assests/menu.jpg" alt="Food Name" />
+            <div class="card-body py-4 text-center">
+              <h3 class="h5 mt-1">Food Name</h3>
+            </div></a
+          >
+        </div>
+        <div class="col-md-4 col-sm-6 mb-grid-gutter">
+          <a class="card border-0 shadow" href="food-delivery-category.html"
+            ><img class="card-img-top" src="assests/menu.jpg" alt="Food Name" />
+            <div class="card-body py-4 text-center">
+              <h3 class="h5 mt-1">Food Name</h3>
+            </div></a
+          >
+        </div>  -->
+
+<!-- <!DOCTYPE html>
+<html ng-app="charList">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="bootstrap.css" />
+    <link rel="stylesheet" href="api.css" />
+    <title>Character website</title>
+  </head>
+  <body ng-controller="myCtrl">
+    <div class="header">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Characters</a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#about">About Us</a>
+              </li>
+            </ul>
+            <form class="d-flex">
+              <input
+                class="form-control me-sm-3"
+                type="search"
+                placeholder="Enter your favourite food"
+                aria-label="Search"
+              />
+              <button class="btn btn-outline-danger" type="submit">
+                Search
+              </button>
+            </form>
+          </div>
+        </div>
+      </nav>
+    </div>
+
+    <div class="container mt-5">
+      <h1 class="text-center">Character Gallery</h1>
+      <div class="row mt-4">
+        <div class="col-md-4" ng-repeat="character in characters | limitTo: 25">
+          <div class="card mb-4">
+            <img class="card-img-top" ng-src="{{ character.image }}" alt="{{ character.name }}">
+            <div class="card-body">
+              <h5 class="card-title">{{ character.name }}</h5>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="angular.min.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html> -->
